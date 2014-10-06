@@ -1,0 +1,16 @@
+{
+  "name": "geoip-lookup",
+  "version": "1.0.0",
+  "description": "Get location info about IP address",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "level": "^0.18.0",
+    "q": "^1.0.1",
+    "qscraper": "0.0.11"
+  }
+}
