@@ -1,5 +1,32 @@
 # `geoip-lookup`
 
+Usage:
+
+	var geoip = require('geoip-lookup');
+
+	// This will attempt to check the local database. if not found, it will return an empty result (non-blocking), but will cache the data later
+	// when the lookup is complete. Useful when e.g. part of an express middleware which you don't want to block rendering the page when your
+	// next() call is in the callback.
+	geoip.lookup('10.10.1.1', function(err, result) {
+		if (err) {
+			console.error(err.stack);
+		} else if (result) {
+			console.log(result);
+		} else {
+			console.log('result not found in local database');
+		}
+		next();
+	});
+
+	// This will get the information from MaxMind and only invoke the callback when it is retrieved.
+	geoip.lookup('10.10.1.1', function(err, result) {
+		if (err) {
+			console.error(err.stack);
+		} else {
+			console.log(result);
+		}
+	}
+
 Tries to cache IP addresses / location lookup via LevelDB, and otherwise pulls the data via a "demo" RESTful API provided by MaxMind.
 
 It's not very clear if this is "legal" as you should probably get a proper license to do this if you're doing it on a large scale.
