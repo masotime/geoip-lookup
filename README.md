@@ -27,6 +27,32 @@ Usage:
 		}
 	}
 
+## How it works
+
+Essentially hits 
+
+	freegeoip.net/json/<ip address>
+
+Please go to https://freegeoip.net/ for more information.
+
+returns JSON in the format 
+
+	{
+		city: "Willemstad"
+		country_code: "CW"
+		country_name: "Curaçao"
+		ip: "190.88.211.185"
+		latitude: 12.1
+		longitude: -68.917
+		metro_code: 0
+		region_code: ""
+		region_name: ""
+		time_zone: "America/Curacao"
+		zip_code: ""
+	}
+
+## Legacy (no longer applies)
+
 Tries to cache IP addresses / location lookup via LevelDB, and otherwise pulls the data via a "demo" RESTful API provided by MaxMind.
 
 It's not very clear if this is "legal" as you should probably get a proper license to do this if you're doing it on a large scale.

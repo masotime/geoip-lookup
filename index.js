@@ -17,7 +17,7 @@ module.exports = {
 						// try and find it, so that future calls will have access
 						var session;
 						session = scraper.session();
-						session.getJson('https://www.maxmind.com/geoip/v2.1/city/'+ip+'?demo=1')
+						session.getJson('https://freegeoip.net/json/'+ip)
 							.then(function(json) {
 								return Q.ninvoke(db, 'put', ip, json);
 							}).catch(function(err) {
@@ -37,7 +37,7 @@ module.exports = {
 		db.get(ip, function(err, value) {
 			if (err) {
 				if (err.notFound) {
-					return scraper.session().getJson('https://www.maxmind.com/geoip/v2.1/city/'+ip+'?demo=1')
+					return scraper.session().getJson('https://freegeoip.net/json/'+ip)
 						.then(function(json) {
 							callback(null, json);
 							return Q.ninvoke(db, 'put', ip, json);
