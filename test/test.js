@@ -10,6 +10,8 @@ Q.longStackSupport = true;
 
 describe('Basic functionality', function() {
 
+	this.timeout(10000);
+
 	var lookup = function(ip) {
 		var deferred = Q.defer();
 		geoip.lookup(ip, function(err, result) {

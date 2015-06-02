@@ -1,5 +1,9 @@
 # `geoip-lookup`
 
+Exposes 2 simple APIs, `.lookup` and `.match`. Both are asynchronous, but `.match` will "block" the callback until it retrieves the information.
+
+`.lookup` will return an undefined result if the data is not cached in a LevelUp local database that is updated once the data is retrieved.
+
 Usage:
 
 	var geoip = require('geoip-lookup');
@@ -19,7 +23,8 @@ Usage:
 	});
 
 	// This will get the information from MaxMind and only invoke the callback when it is retrieved.
-	geoip.lookup('10.10.1.1', function(err, result) {
+	// it will effectively "block" via the callback, and probably not suitable if continuous execution depends on callbacks
+	geoip.check('10.10.1.1', function(err, result) {
 		if (err) {
 			console.error(err.stack);
 		} else {
